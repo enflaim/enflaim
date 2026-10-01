@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EnFlaim | The Beginning of Something Bigger</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top, rgba(255,255,255,.7), transparent 45%),
+        linear-gradient(135deg, #eee1c4, #f7efd9, #e8d8b5);
+    color: #3b2a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+/* -----------------------------
+   MAIN CONTAINER
+----------------------------- */
+
+.wrapper {
+    width: min(920px, 94%);
+    margin: auto;
+    padding: 35px 0 70px;
+}
+
+/* -----------------------------
+   HEADER
+----------------------------- */
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.ornament {
+    font-size: 30px;
+    color: #8a6a32;
+    letter-spacing: 10px;
+    margin-bottom: 8px;
+}
+
+.logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 8vw, 70px);
+    letter-spacing: 8px;
+    color: #4b351b;
+    margin: 0;
+    text-shadow: 1px 1px 0 #fff8e8;
+}
+
+.subtitle {
+    margin-top: 5px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #856c43;
+    text-transform: uppercase;
+}
+
+/* -----------------------------
+   TOP ENVELOPE AREA
+----------------------------- */
+
+.envelope-area {
+    text-align: center;
+    margin: 25px auto 35px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.envelope-frame {
+    display: inline-block;
+    padding: 20px 25px 15px;
+    transition: transform .5s ease;
+}
+
+.envelope-frame:hover {
+    transform: translateY(-5px);
+}
+
+.envelope {
+    display: block;
+    width: min(430px, 82vw);
+    height: auto;
+    margin: auto;
+    filter:
+        drop-shadow(0 16px 14px rgba(65, 42, 18, .22));
+    transition:
+        transform .6s ease,
+        filter .6s ease;
+}
+
+.envelope-area.opening .envelope {
+    animation: envelopeShake .8s ease;
+}
+
+.envelope-area.opened .envelope {
+    transform: scale(.96);
+    filter:
+        drop-shadow(0 8px 8px rgba(65, 42, 18, .18));
+}
+
+@keyframes envelopeShake {
+    0%, 100% {
+        transform: rotate(0);
+    }
+
+    15% {
+        transform: rotate(-3deg);
+    }
+
+    30% {
+        transform: rotate(3deg);
+    }
+
+    45% {
+        transform: rotate(-2deg);
+    }
+
+    60% {
+        transform: rotate(2deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+}
+
+.instruction {
+    margin-top: 15px;
+    color: #624a29;
+}
+
+.instruction-main {
+    font-size: 20px;
+    margin: 0 0 5px;
+}
+
+.instruction-sub {
+    font-size: 13px;
+    letter-spacing: 1px;
+    opacity: .8;
+}
+
+/* -----------------------------
+   LETTER
+----------------------------- */
+
+.letter-section {
+    display: none;
+    margin-top: 30px;
+}
+
+.letter-section.show {
+    display: block;
+    animation: letterAppear 1.1s ease both;
+}
+
+@keyframes letterAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter {
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,.65), transparent 30%),
+        linear-gradient(110deg, #fffaf0, #f5e8c9, #fff9e9);
+    padding: clamp(30px, 6vw, 70px);
+    box-shadow:
+        0 18px 45px rgba(68, 44, 17, .18),
+        inset 0 0 45px rgba(124, 91, 37, .08);
+    overflow: hidden;
+}
+
+/* Inner classic frame */
+
+.letter::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border: 1px solid rgba(124, 91, 37, .24);
+    pointer-events: none;
+}
+
+.letter::after {
+    content: "";
+    position: absolute;
+    inset: 25px;
+    border: 1px solid rgba(124, 91, 37, .10);
+    pointer-events: none;
+}
+
+/* Botanical decorations */
+
+.leaf {
+    position: absolute;
+    color: #7c7043;
+    opacity: .32;
+    font-size: 42px;
+    pointer-events: none;
+}
+
+.leaf.top-left {
+    top: 25px;
+    left: 25px;
+    transform: rotate(-25deg);
+}
+
+.leaf.top-right {
+    top: 25px;
+    right: 25px;
+    transform: rotate(25deg);
+}
+
+.leaf.bottom-left {
+    bottom: 25px;
+    left: 25px;
+    transform: rotate(25deg);
+}
+
+.leaf.bottom-right {
+    bottom: 25px;
+    right: 25px;
+    transform: rotate(-25deg);
+}
+
+/* Letter header */
+
+.letter-head {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.letter-ornament {
+    font-size: 26px;
+    color: #927039;
+    letter-spacing: 7px;
+}
+
+.location-date {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 25px 0 30px;
+    font-size: 15px;
+    color: #5d482d;
+}
+
+.greeting {
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+/* Subject */
+
+.subject {
+    font-weight: bold;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* Body */
+
+.letter-body {
+    position: relative;
+    z-index: 2;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 2.05;
+    text-align: justify;
+}
+
+.letter-body p {
+    margin: 0 0 20px;
+}
+
+/* Drop cap */
+
+.dropcap::first-letter {
+    float: left;
+    font-family: Georgia, serif;
+    font-size: 58px;
+    line-height: .8;
+    padding-right: 8px;
+    color: #76572c;
+}
+
+/* Signature */
+
+.signature {
+    text-align: right;
+    margin-top: 35px;
+    line-height: 1.9;
+    font-size: 17px;
+}
+
+/* Seal */
+
+.seal {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid rgba(115, 82, 31, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 35px auto 0;
+    color: #76572c;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    opacity: .8;
+}
+
+/* -----------------------------
+   BOTTOM ENVELOPE
+----------------------------- */
+
+.bottom-envelope {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 25px;
+}
+
+.bottom-ornament {
+    font-size: 27px;
+    color: #8c6c35;
+    margin-bottom: 15px;
+}
+
+.bottom-envelope img {
+    display: block;
+    width: min(390px, 78vw);
+    height: auto;
+    margin: auto;
+    filter:
+        drop-shadow(0 15px 13px rgba(65, 42, 18, .20));
+    transition: transform .5s ease;
+}
+
+.bottom-envelope img:hover {
+    transform: translateY(-5px);
+}
+
+.bottom-text {
+    margin-top: 15px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: #80673d;
+}
+
+/* -----------------------------
+   FOOTER
+----------------------------- */
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #806b49;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* -----------------------------
+   MOBILE
+----------------------------- */
+
+@media (max-width: 600px) {
+
+    .wrapper {
+        width: 94%;
+        padding-top: 20px;
+    }
+
+    .logo {
+        letter-spacing: 4px;
+    }
+
+    .subtitle {
+        letter-spacing: 1px;
+    }
+
+    .letter {
+        padding: 35px 25px;
+    }
+
+    .letter::before {
+        inset: 12px;
+    }
+
+    .letter::after {
+        inset: 17px;
+    }
+
+    .location-date {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .letter-body {
+        font-size: 16px;
+        line-height: 1.95;
+        text-align: left;
+    }
+
+    .greeting {
+        font-size: 20px;
+    }
+
+    .leaf {
+        font-size: 30px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="ornament">
+            ❦
+        </div>
+
+        <h1 class="logo">
+            EnFlaim
+        </h1>
+
+        <div class="subtitle">
+            The Beginning of Something Bigger
+        </div>
+
+    </header>
+
+
+    <!-- TOP ENVELOPE -->
+
+    <section
+        class="envelope-area"
+        id="envelopeArea"
+        onclick="openLetter()"
+        role="button"
+        tabindex="0"
+        aria-label="Open EnFlaim letter"
+    >
+
+        <div class="envelope-frame">
+
+            <img
+                class="envelope"
+                src="EnVelope.png"
+                alt="EnFlaim envelope"
+                draggable="false"
+            >
+
+        </div>
+
+
+        <div class="instruction">
+
+            <p class="instruction-main">
+                Welcome to EnFlaim.
+            </p>
+
+            <div class="instruction-sub">
+                Open the letter
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LETTER -->
+
+    <section
+        class="letter-section"
+        id="letterSection"
+    >
+
+        <article class="letter">
+
+            <div class="leaf top-left">
+                ❧
+            </div>
+
+            <div class="leaf top-right">
+                ❧
+            </div>
+
+            <div class="leaf bottom-left">
+                ❧
+            </div>
+
+            <div class="leaf bottom-right">
+                ❧
+            </div>
+
+
+            <!-- LETTER HEADER -->
+
+            <div class="letter-head">
+
+                <div class="letter-ornament">
+                    ❦ ❦ ❦
+                </div>
+
+
+                <div class="location-date">
+
+                    <span>
+                        EnFlaim
+                    </span>
+
+                    <span>
+                        01 October, 2026
+                    </span>
+
+                </div>
+
+
+                <div class="greeting">
+                    Welcome to EnFlaim,
+                </div>
+
+
+                <div class="subject">
+                    From an Animation Channel to the Beginning of Something Bigger.
+                </div>
+
+            </div>
+
+
+            <!-- LETTER BODY -->
+
+            <div class="letter-body">
+
+                <p class="dropcap">
+                    EnFlaim is an online organization with Anime and Games at its core. It was born through an animation channel on YouTube, but that channel was only the beginning. The first idea was simple, but over time the vision became much bigger.
+                </p>
+
+
+                <p>
+                    After creating the YouTube channel, EnFlaim eventually stopped focusing on YouTube as its main direction. Instead, the focus shifted toward building something larger: an organization that could grow beyond a single channel and create opportunities across different areas of the internet.
+                </p>
+
+
+                <p>
+                    EnFlaim's present focus is on building the foundation of the organization. Anime and Games remain at its core, while the organization develops the ideas, systems, projects, and people needed for its future.
+                </p>
+
+
+                <p>
+                    The future vision of EnFlaim is to become an organization with multiple projects, businesses, and areas of work across the internet. The goal is not to remain limited to one platform or one type of project. EnFlaim is being built with the intention of growing into something much larger over time.
+                </p>
+
+
+                <p>
+                    One of the most important parts of this vision is creating opportunities for people. EnFlaim aims to become a place where people can work, learn, develop their abilities, gain experience, and grow alongside the organization.
+                </p>
+
+
+                <p>
+                    Freshers are welcome at EnFlaim. Someone does not need to already possess advanced skills or extensive knowledge to begin. A person can start with little or no experience, receive training, learn through practice, develop useful skills, and gradually become capable of taking on real responsibilities.
+                </p>
+
+
+                <p>
+                    The purpose is not simply to find people who are already skilled. EnFlaim also wants to help people become skilled. Someone who starts with almost nothing can learn, improve, contribute to projects, and eventually create opportunities for themselves both inside and outside the organization.
+                </p>
+
+
+                <p>
+                    EnFlaim may grow through different areas such as Anime, Games, Data Entry, Video &amp; Graphics, Trading, and other fields that become part of the organization's future. These areas may develop independently, but they will remain connected to the larger EnFlaim vision.
+                </p>
+
+
+                <p>
+                    The journey started with an animation channel on YouTube. That channel was the first chapter, not the final destination. From that beginning, EnFlaim is now focused on building an organization where ideas can become projects, projects can become businesses, and people can find opportunities to learn, work, and grow.
+                </p>
+
+
+                <p>
+                    EnFlaim is still at the beginning of its journey. There is a long way to go, many things to build, and many ideas that have not yet become reality.
+                </p>
+
+
+                <p>
+                    But every organization has to begin somewhere.
+                </p>
+
+
+                <p>
+                    This is where EnFlaim begins.
+                </p>
+
+
+                <!-- SIGNATURE -->
+
+                <div class="signature">
+
+                    With vision,<br>
+
+                    <strong>
+                        EnFlaim
+                    </strong>
+
+                </div>
+
+
+                <!-- SEAL -->
+
+                <div class="seal">
+                    E
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- BOTTOM ENVELOPE -->
+
+        <div class="bottom-envelope">
+
+            <div class="bottom-ornament">
+                ❦ ───────── ❦
+            </div>
+
+
+            <img
+                src="EnVelope.png"
+                alt="EnFlaim envelope"
+                draggable="false"
+            >
+
+
+            <div class="bottom-text">
+                The Beginning of Something Bigger
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+        EnFlaim · The Beginning of Something Bigger
+    </footer>
+
+</div>
+
+
+<script>
+
+let letterOpened = false;
+
+
+/* -----------------------------
+   OPEN LETTER
+----------------------------- */
+
+function openLetter() {
+
+    if (letterOpened) {
+        return;
+    }
+
+    letterOpened = true;
+
+    const envelopeArea =
+        document.getElementById("envelopeArea");
+
+    const letterSection =
+        document.getElementById("letterSection");
+
+
+    /* Start envelope animation */
+
+    envelopeArea.classList.add("opening");
+
+
+    /* Show letter after envelope animation */
+
+    setTimeout(function () {
+
+        envelopeArea.classList.remove("opening");
+
+        envelopeArea.classList.add("opened");
+
+        letterSection.classList.add("show");
+
+
+        /* Scroll smoothly to letter */
+
+        setTimeout(function () {
+
+            letterSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 150);
+
+    }, 800);
+
+}
+
+
+/* -----------------------------
+   KEYBOARD SUPPORT
+----------------------------- */
+
+document
+    .getElementById("envelopeArea")
+    .addEventListener("keydown", function(event) {
+
+        if (
+            event.key === "Enter" ||
+            event.key === " "
+        ) {
+
+            event.preventDefault();
+
+            openLetter();
+
+        }
+
+    });
+
+
+/* -----------------------------
+   PREVENT IMAGE DRAGGING
+----------------------------- */
+
+document
+    .querySelectorAll("img")
+    .forEach(function(img) {
+
+        img.addEventListener(
+            "dragstart",
+            function(event) {
+
+                event.preventDefault();
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
+</html>
