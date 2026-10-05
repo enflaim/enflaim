@@ -6,7 +6,7 @@
 
     <title>EnFlaim | Under Maintenance</title>
 
-    <link rel="icon" type="image/png" href="assets/images/EnFevicon.png">
+    <link rel="icon" type="image/png" href="./assets/images/EnFevicon.png">
 
     <style>
         * {
@@ -22,13 +22,13 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
             background: #070b17;
             color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
 
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
 
             overflow: hidden;
         }
@@ -41,17 +41,18 @@
         }
 
         .logo {
+            display: block;
             width: 190px;
             max-width: 70%;
             height: auto;
-            margin-bottom: 45px;
+            margin: 0 auto 45px;
         }
 
         h1 {
             font-size: clamp(32px, 6vw, 56px);
             font-weight: 700;
             letter-spacing: -1px;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .line {
@@ -69,6 +70,7 @@
         }
 
         @media (max-width: 600px) {
+
             .maintenance {
                 padding: 30px 20px;
             }
@@ -94,8 +96,8 @@
     <main class="maintenance">
 
         <img
-            src="assets/images/EnLogo.png"
-            alt="EnFlaim"
+            src="./assets/images/EnLogo.png"
+            alt="EnFlaim Logo"
             class="logo"
         >
 
