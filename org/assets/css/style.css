@@ -59,3 +59,58 @@ nav a {
 nav a:hover {
     color: #18aaff;
     }
+.hero {
+    min-height: 100vh;
+    padding: 120px 8% 60px;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(0, 140, 255, 0.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #020713,
+            #031a35,
+            #020914
+        );
+}
+
+.hero-text {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 50px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #a9bbcf;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.hero a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    background: #079cff;
+    color: white;
+
+    text-decoration: none;
+}
