@@ -4,24 +4,39 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #020914;
     color: white;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
+
+
+/* =========================
+   HEADER
+========================= */
+
 header {
     height: 70px;
     padding: 0 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
 
     background: rgba(2, 9, 20, 0.85);
     backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
     z-index: 100;
 }
@@ -46,6 +61,9 @@ header img {
     object-fit: contain;
 }
 
+
+/* Navigation */
+
 nav {
     display: flex;
     gap: 25px;
@@ -54,11 +72,19 @@ nav {
 nav a {
     color: #b9c7d8;
     font-size: 14px;
+
+    transition: 0.3s ease;
 }
 
 nav a:hover {
     color: #18aaff;
-    }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
     min-height: 100vh;
     padding: 120px 8% 60px;
@@ -66,11 +92,19 @@ nav a:hover {
     display: flex;
     align-items: center;
 
+    position: relative;
+    overflow: hidden;
+
     background:
         radial-gradient(
             circle at 80% 50%,
             rgba(0, 140, 255, 0.25),
             transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(0, 80, 255, 0.12),
+            transparent 30%
         ),
         linear-gradient(
             135deg,
@@ -80,37 +114,181 @@ nav a:hover {
         );
 }
 
+
+/* Background glow */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -150px;
+    top: 100px;
+
+    background: rgba(0, 140, 255, 0.15);
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+}
+
+
+/* Hero text */
+
 .hero-text {
+    position: relative;
+    z-index: 2;
+
     max-width: 700px;
 }
 
 .hero h1 {
     font-size: 70px;
     margin-bottom: 20px;
+
+    letter-spacing: -2px;
 }
 
 .hero h2 {
     font-size: 50px;
     line-height: 1.1;
+
     margin-bottom: 20px;
+}
+
+.hero h2::first-line {
+    color: white;
 }
 
 .hero p {
     color: #a9bbcf;
+
     font-size: 18px;
     line-height: 1.7;
+
     margin-bottom: 15px;
 }
 
+.hero p:first-of-type {
+    color: #18aaff;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   HERO BUTTON
+========================= */
+
 .hero a {
     display: inline-block;
+
     margin-top: 20px;
-    padding: 14px 25px;
+
+    padding: 14px 28px;
 
     border-radius: 30px;
 
-    background: #079cff;
+    background: linear-gradient(
+        135deg,
+        #008cff,
+        #00baff
+    );
+
     color: white;
 
     text-decoration: none;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 25px rgba(0, 150, 255, 0.25);
+
+    transition: 0.3s ease;
+}
+
+.hero a:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 35px rgba(0, 150, 255, 0.5);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 5%;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 120px 7% 60px;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero h2 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    header {
+        position: absolute;
+    }
+
+    header > a {
+        font-size: 19px;
+    }
+
+    header img {
+        width: 32px;
+        height: 32px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 100vh;
+        padding: 120px 7% 50px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
 }
